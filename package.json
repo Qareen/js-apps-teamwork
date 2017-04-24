@@ -1,0 +1,24 @@
+{
+  "name": "team-qareen-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Qareen/js-apps-teamwork.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Qareen/js-apps-teamwork/issues"
+  },
+  "homepage": "https://github.com/Qareen/js-apps-teamwork#readme",
+  "dependencies": {
+    "bower": "^1.8.0",
+    "systemjs": "^0.20.12",
+    "systemjs-plugin-babel": "0.0.21"
+  }
+}
