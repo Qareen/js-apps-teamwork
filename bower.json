@@ -1,0 +1,15 @@
+{
+  "name": "team-qareen-app",
+  "description": "",
+  "main": "app.js",
+  "authors": [
+    "matir8 <martin.markov28@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/Qareen/js-apps-teamwork",
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "handlebars": "^4.0.5",
+    "navigo": "^4.6.2"
+  }
+}
