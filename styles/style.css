@@ -1,0 +1,22 @@
+.navbar {
+    margin-bottom: 0;
+    border-radius: 0;
+}
+
+.jumbotron {
+    color: black;
+    background: url('http://www.hotszots.eu/_galler/IMG/FERRARI/ferrari-f12-berlinetta-car-front-hd-wallpaper.jpg') center center;
+    padding: 5px;
+    margin-bottom: 0;
+
+}
+
+#welcome {
+    display: inline-block;
+    vertical-align: top;
+    margin-bottom: 45px;
+}
+
+#subtitle {
+    margin-top: 60px;
+}
