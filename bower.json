@@ -10,6 +10,7 @@
   "dependencies": {
     "bootstrap": "^3.3.7",
     "handlebars": "^4.0.5",
-    "navigo": "^4.6.2"
+    "navigo": "^4.6.2",
+    "toastr": "^2.1.3"
   }
 }
