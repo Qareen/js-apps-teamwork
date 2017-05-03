@@ -19,6 +19,9 @@ export function registerController() {
 
                     firebase.auth().onAuthStateChanged((user) => {
                         if (user) {
+                            user.updateProfile({
+                                displayName: credentials.userName
+                            });
                             toastr.success('You registered successfully. You are now logged in.');
                             window.location.href = "/#/home";
                         }
@@ -31,6 +34,7 @@ export function registerController() {
 function validateData() {
     let credentials = {
         email: "",
+        userName: "",
         password: ""
     }
 
@@ -38,6 +42,13 @@ function validateData() {
         credentials.email = $('#email').val();
     } else {
         toastr.error('Invalid email.');
+        return;
+    } 
+
+    if (validator.userName($('#username').val())) {
+        credentials.userName = $('#username').val()
+    } else {
+        toastr.error('Invalid username.');
         return;
     }
 
