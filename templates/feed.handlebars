@@ -1,0 +1,25 @@
+<div class="post-container">
+    {{#each this}}
+    <div class="panel panel-default">
+        <div class="panel-heading text-center"><h3>{{carBrand}}</h3></div>
+        <div class="panel-body">
+            <div class="center-block">
+                <img class="post-image img-responsive" src="{{imageURL}}" alt="{{carBrand}}">
+                <div class="post-description text-center">
+                    <span>{{description}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="panel-footer">
+            <div class="likes-panel">
+                {{#if isLiked}}
+                    <span class="glyphicon glyphicon-heart-empty like liked" id="{{id}}-unlike"></span>
+                {{else}}
+                    <span class="glyphicon glyphicon-heart-empty like not-liked" id="{{id}}-like"></span>
+                {{/if}}
+                <span id="{{id}}-num-of-likes">{{likes}}</span>
+            </div>
+        </div>
+    </div>
+    {{/each}}
+</div>
