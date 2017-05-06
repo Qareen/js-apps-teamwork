@@ -1,4 +1,6 @@
 import { templates } from '../utils/templates.js';
+import { validator } from '../utils/validator.js';
+import { guid } from '../utils/guid.js';
 
 export function homeController() {
     firebase.auth().onAuthStateChanged((user) => {
@@ -6,12 +8,20 @@ export function homeController() {
             firebase.database().ref('/posts').once('value').then((snapshot) => {
                 templates.get('feed')
                     .then((res) => {
-                        let data = snapshot.val().reverse();
-                        let currentUser = firebase.auth().currentUser;
-                        
-                        if (data) {
+                        let obj = snapshot.val();
+                        let data = [];
+                        let currentUser = firebase.auth().currentUser.displayName;
+                        if (obj) {
+                            for (var key in obj) {
+                                var el = obj[key];
+                                el.id = key;
+                                data.push(el);
+                            }
+
+                            data.reverse();
+
                             data.forEach((post) => {
-                                if (post.likedBy[currentUser.displayName]) {
+                                if (post.likedBy[currentUser]) {
                                     post.isLiked = true;
                                     attachToUnlikeBtn(post);
                                 }
@@ -29,7 +39,11 @@ export function homeController() {
                                 attachToUnlikeBtn(post);
                             });
                         }
-                    })
+
+                        $("#add-post").on('click', () => {
+                            loadAddPostTemplate();
+                        });
+                    });
             });
         } else {
             templates.get('home')
@@ -71,7 +85,7 @@ function like(post) {
 
 function unlike(post) {
     let username = firebase.auth().currentUser.displayName;
-    post.likedBy[username] = 0;
+    delete post.likedBy[username];
 
     let countOfLikes = 0;
     for (var key in post.likedBy) {
@@ -112,4 +126,103 @@ function attachToLikeBtn(post) {
         event.target.id = `${post.id}-unlike`;
         attachToUnlikeBtn(post);
     });
+}
+
+function loadAddPostTemplate() {
+    templates.get("add-post")
+        .then((res) => {
+            let hbTemplate = Handlebars.compile(res);
+            let template = hbTemplate();
+
+            $("#content").html(template);
+
+            $("#submit-post").on('click', () => {
+                exportData();
+            });
+
+            $("#image-file").on("change", (e) => {
+                $('#upload-file-info').html($(e.currentTarget).val());
+                let file = e.target.files[0];
+                let fileType = file["type"];
+                let ValidImageTypes = ["image/gif", "image/jpeg", "image/png"];
+                if ($.inArray(fileType, ValidImageTypes) < 0) {
+                    toastr.error("Please select an image file");
+                    file = null;
+                    return;
+                }
+                let reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = () => {
+                    window.localStorage.setItem("tempImage", reader.result);
+                }
+            });
+
+            $("#go-back").on("click", () => {
+                homeController();
+            });
+        });
+}
+
+function exportData() {
+    let post = {
+        author: firebase.auth().currentUser.displayName,
+        carBrand: "",
+        category: "",
+        description: "",
+        imageURL: "",
+        likedBy: {
+            "admin": 0
+        },
+        likes: 0
+    }
+
+    if (validator.carBrand($("#car-brand").val())) {
+        post.carBrand = $("#car-brand").val();
+    } else {
+        toastr.error("Invalid car brand. It should be between 2 and 100 symbols long.");
+        return;
+    }
+
+    if (validator.desription($("#description").val())) {
+        post.description = $("#description").val();
+    } else {
+        toastr.error("Invalid description. It should be between 3 and 1000 symbols long.");
+        return;
+    }
+
+    post.category = $("#category").val();
+
+    if (validator.image($("#image-file").val())) {
+        uploadImage(post);
+    } else {
+        toastr.error("Please add image.");
+    }
+}
+
+function addPost(post) {
+    let postsRef = firebase.database().ref('/posts');
+    let newPostRef = postsRef.push(post);
+    if (newPostRef) {
+        toastr.success("Post added successfully.");
+        homeController();
+    }
+}
+
+function uploadImage(post) {
+    let uniqueImageName = guid();
+    let storageRef = firebase.storage().ref();
+    let imagesRef = storageRef.child('/images/' + uniqueImageName);
+    let imgStr = window.localStorage.getItem("tempImage");
+
+    imagesRef.putString(imgStr, 'data_url')
+        .then((snapshot) => {
+            post.imageURL = snapshot.downloadURL;
+            addPost(post);
+        })
+        .catch((err) => {
+            toastr.error("Unable to upload your image. Please try again later.");
+            return;
+        });
+
+    localStorage.removeItem("tempImage");
 }

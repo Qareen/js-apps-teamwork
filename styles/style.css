@@ -1,6 +1,7 @@
 .navbar {
     margin-bottom: 0;
     border-radius: 0;
+    margin-bottom: 10px;
 }
 
 .jumbotron {
@@ -27,12 +28,7 @@
     border-color: #333;
     color: rgb(255, 255, 255);
 }
-.form-control:focus
-{
-    background-color: #333;
-    border-color: #333;
-    color: rgb(255, 255, 255);
-}
+
 .form-signup input[type="text"],.form-signup input[type="password"] { border: 1px solid rgb(50, 118, 177); }
 
 #register {
@@ -67,4 +63,53 @@
 
 .post-image {
     margin-bottom: 20px;
+    height: 100%;
+    width: 100%;
+}
+
+.btn-circle.btn-lg{
+  width: 60px;
+  height: 60px;
+  padding: 10px 16px;
+  font-size: 20px;
+  line-height: 1.33;
+  border-radius: 50%;
+  border: none;
+  position: fixed;
+  bottom: 2em;
+  right: 0.5em;
+  background-color: darkorange;
+  color: wheat;
+}
+
+.btn-circle:hover{
+    color: darkgray;
+}
+
+.form-wrapper {
+    margin-left: 10%;
+    margin-right: 10%;
+    text-align: center;
+    padding: 4em;
+    background-color: white;
+}
+
+.label-center {
+    display: block;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.form-control {
+    margin-bottom: 20px;
+}
+
+#go-back {
+    display: inline;
+    border: none;
+    border-radius: 50%;
+    padding: 10px 16px;
+    font-size: 20px;
+    line-height: 1.33;
 }
