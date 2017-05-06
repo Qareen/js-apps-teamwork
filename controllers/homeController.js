@@ -44,6 +44,10 @@ export function homeController() {
                             loadAddPostTemplate();
                         });
                     });
+
+                let profilePic = document.getElementById('profilePicIcon');
+                console.log(profilePic);
+                profilePic.setAttribute('src', user.photoURL);
             });
         } else {
             templates.get('home')

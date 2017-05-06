@@ -14,4 +14,7 @@ router
     .on('/login', () => {
         controllers.login();
     })
+    .on('/profile', () => {
+        controllers.profile();
+    })
     .resolve();
