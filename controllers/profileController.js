@@ -11,12 +11,9 @@ export function profileController() {
 
             $('#content').html(template);
 
-            let changePicBtn = document.getElementById('changePicBtn');
-            changePicBtn.addEventListener('click', showPictureChangeContainer);
-
             let savePicBtn = document.getElementById('savePicBtn');
             savePicBtn.addEventListener('click', function () {
-                submitPictureUrl(user);
+                editPictureUrl(user);
             });
 
             let cancelPicBtn = document.getElementById('cancelPicBtn');
@@ -25,39 +22,74 @@ export function profileController() {
                 hide(changePicContainer);
             });
 
+            let changePicBtn = document.getElementById('changePicBtn');
+            changePicBtn.addEventListener('click', function () {
+                show(changePicContainer);
+            });
+
             let editEmailBtn = document.getElementById('editEmailBtn');
             let changeEmailContainer = document.getElementById('changeEmailContainer');
-            editEmailBtn.addEventListener('click', function() {
+            editEmailBtn.addEventListener('click', function () {
                 show(changeEmailContainer);
             });
-            
-            let saveEmailBtn = document.getElementById('')
+
+            let cancelEmailBtn = document.getElementById('cancelEmailBtn');
+            cancelEmailBtn.addEventListener('click', function () {
+                hide(changeEmailContainer);
+            });
+
+            let saveEmailBtn = document.getElementById('saveEmailBtn');
+            saveEmailBtn.addEventListener('click', function () {
+                editEmail(user);
+                hide(changeEmailContainer);
+            });
+
+            let editNameBtn = document.getElementById('editNameBtn');
+            let changeNameContainer = document.getElementById('changeNameContainer');
+            editNameBtn.addEventListener('click', function () {
+                show(changeNameContainer);
+            });
+
+            let cancelNameBtn = document.getElementById('cancelNameBtn');
+            cancelNameBtn.addEventListener('click', function () {
+                hide(changeNameContainer);
+            });
+
+            let saveNameBtn = document.getElementById('saveNameBtn');
+            saveNameBtn.addEventListener('click', function() {
+                editName(user);
+                location.reload();
+            })
         });
 }
 function show(element) {
-    element.style.display = "";
+    element.style.display = "inline";
 }
 
 function hide(element) {
     element.style.display = "none";
 }
 
-function showEmailChangeContainer() {
-    let changeEmailContainer = document.getElementById('changeEmailContainer');
-    changeEmailContainer.style.display = "block";
+function editEmail(user) {
+    let emailTextBox = document.getElementById('emailTextBox');
+    let email = emailTextBox.value;
+    let credential;
+
+    user.reauthenticate(credential).then(function () {
+        user.updateEmail(email);
+    });
 }
 
-function showPictureChangeContainer() {
-    let changePicContainer = document.getElementById('changePicContainer');
-    changePicContainer.style.display = "block";
+function editName(user) {
+    let nameTextBox = document.getElementById('nameTextBox');
+    let name = nameTextBox.value;
+
+    user.updateProfile({
+        displayName: name
+    });
 }
 
-function hidePictureChangeContainer(){
-    let changePicContainer = document.getElementById('changePicContainer');
-    changePicContainer.style.display = "none";
-}
-
-function submitPictureUrl(user) {
+function editPictureUrl(user) {
     const changePicContainer = document.getElementById('changePicContainer');
     const pattern = new RegExp(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g);
 
@@ -75,7 +107,7 @@ function submitPictureUrl(user) {
     }
 
     else {
-        alert("Invalid URL!");
+        toastr.error('Invalid URL!');
         return;
     }
 
