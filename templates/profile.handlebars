@@ -1,34 +1,66 @@
-<div class="post-container">
+<div id="detailsContainer">
     <div class="panel panel-default">
-        <div class="panel-heading text-center">
+        <div id="detailsHeader" class="panel-heading text-center">
             <h3>Profile details</h3>
         </div>
-        <div class="panel-body">
-            <div class="center-block">
-                <img id="detailsPicture" src="{{this.photoURL}}" alt="Your profile picture">
-                <div id="profileInfoContainer">
-                    <p>Email: {{this.email}}</p>
-                    <p>Display name: {{this.displayName}}</p>
-                    <p></p>
-                </div>
-                <button id="changePic" type="button" class="btn btn-primary">
-                    {{#if this.PhotoUrl}}
-                        Change profile picture
-                    {{else}}
-                        Add profile picture
-                    {{/if}}
-                </button>
-                <div id="changePicContainer" class="form-group row">
-                    <div class="col-xs-3">
-                        <label for="ex1">Picture URL:</label>
-                        <input class="form-control" id="ex1" type="text">
-                        <button class="btn btn-success">Submit</button>
+        <div class="container">
+            <div class="row-fluid">
+                <div id="profilePictureContainer" class="col col-xs-4">
+                    <img id="profilePicture" class="img-rounded" src="{{this.photoURL}}"
+                         alt="No profile picture added yet">
+                    <button id="changePicBtn" type="button" class="btn btn-primary">
+                        {{#if this.photoURL}}
+                            Change profile picture
+                        {{else}}
+                            Add profile picture
+                        {{/if}}
+                    </button>
+                    <div id="changePicContainer" class="form-group row">
+                        <div class="col-xs-10">
+                            <!--<label for="urlTextBox">Picture URL:</label>-->
+                            <input class="form-control" id="urlTextBox" type="url" placeholder="Picture URL">
+                            <button id="submitPicBtn" class="btn btn-success">Save</button>
+                            <button id="cancelPicBtn" class="btn btn-danger">Cancel</button>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
+                <div id="profileInfoContainer" class="col col-xs-7">
+                    Email: {{this.email}}
 
-        <button type="button" class="btn btn-circle btn-lg" id="add-post">
-            <i class="glyphicon glyphicon-plus"></i>
-        </button>
-    </div>
+                    <button id="editEmailBtn" class="btn btn-primary"><label for="emailTextBox">Edit</label>
+                    </button>
+                    <div id="changeEmailContainer" class="form-group row changeInfoContainer">
+                        <div class="col-xs-10">
+                            <input class="form-control changeInfo" id="emailTextBox" type="email"
+                                   placeholder="e.g John@mymail.com">
+                            <button id="saveEmailBtn" class="btn btn-success">Save</button>
+                            <button id="cancelEmailBtn" class="btn btn-danger">Cancel</button>
+                        </div>
+                    </div>
+
+                                    Display name:
+                                    {{#if this.displayName}}
+                                        {{this.displayName}}
+                                    {{else}}
+                                        <small class="text-muted">
+                                            <u>No display name added yet</u>
+                                        </small>
+                                    {{/if}}
+                                    <button id="editNameBtn" class="btn btn-primary">Edit</button>
+                            <div class="form-group row changeInfoContainer">
+                                <div class="col-xs-12">
+                                    <input class="form-control" id="nameTextBox" type="text" placeholder="e.g John">
+                                    <button id="submitNameBtn" class="btn btn-success">Save</button>
+                                    <button id="cancelNameBtn" class="btn btn-danger">Cancel</button>
+                                </div>
+                            </div>
+                            <p></p>
+                        </div>
+
+                    </div>
+                </div>
+
+                <button type="button" class="btn btn-circle btn-lg" id="add-post">
+                    <i class="glyphicon glyphicon-plus"></i>
+                </button>
+            </div>

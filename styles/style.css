@@ -22,14 +22,15 @@
     margin-top: 60px;
 }
 
-.input-group-addon
-{
+.input-group-addon {
     background-color: #333;
     border-color: #333;
     color: rgb(255, 255, 255);
 }
 
-.form-signup input[type="text"],.form-signup input[type="password"] { border: 1px solid rgb(50, 118, 177); }
+.form-signup input[type="text"], .form-signup input[type="password"] {
+    border: 1px solid rgb(50, 118, 177);
+}
 
 #register {
     margin-top: 10%;
@@ -67,22 +68,22 @@
     width: 100%;
 }
 
-.btn-circle.btn-lg{
-  width: 60px;
-  height: 60px;
-  padding: 10px 16px;
-  font-size: 20px;
-  line-height: 1.33;
-  border-radius: 50%;
-  border: none;
-  position: fixed;
-  bottom: 2em;
-  right: 0.5em;
-  background-color: darkorange;
-  color: wheat;
+.btn-circle.btn-lg {
+    width: 60px;
+    height: 60px;
+    padding: 10px 16px;
+    font-size: 20px;
+    line-height: 1.33;
+    border-radius: 50%;
+    border: none;
+    position: fixed;
+    bottom: 2em;
+    right: 0.5em;
+    background-color: darkorange;
+    color: wheat;
 }
 
-.btn-circle:hover{
+.btn-circle:hover {
     color: darkgray;
 }
 
@@ -106,7 +107,6 @@
 }
 
 #go-back {
-
     display: inline;
     border: none;
     border-radius: 50%;
@@ -115,18 +115,22 @@
     line-height: 1.33;
 }
 
-#detailsPicture {
-    height: 350px;
+#profilePicture {
+    height: 300px;
     width: 250px;
 }
 
-#changePic {
-    display:block;
+#changePicBtn {
+    display: block;
     margin-top: 10px;
+    font-size: 20px;
 }
 
 #profileInfoContainer {
-    float: right;
+    font-size: 25px;
+    margin-top: 30px;
+    margin-left: 50px;
+    line-height: 50px;
 }
 
 #profilePicIcon {
@@ -139,4 +143,18 @@
 #changePicContainer {
     display: none;
     margin-top: 20px;
+}
+
+#detailsContainer {
+    width: 80%;
+    margin-left: 10%;
+}
+
+#detailsHeader{
+    margin-bottom: 5%;
+}
+
+.changeInfoContainer {
+    display: none;
+    margin-top: 3%;
 }
