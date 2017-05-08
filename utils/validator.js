@@ -4,7 +4,7 @@ export let validator = {
         return regexPattern.test(email);
     },
     userName: userName => {
-        if (userName >= 4 && userName <= 20) {
+        if (userName.length >= 4 && userName.length <= 20) {
             let usernameRegex = /^[a-zA-Z0-9]+$/;
             return usernameRegex.test(userName);
         }
