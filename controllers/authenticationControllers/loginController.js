@@ -17,7 +17,13 @@ export function loginController() {
                         if (credentials) {
                             authenticateUser(credentials);
                         }
-                    })
+                    });
+
+                    $(document).keypress((e) => {
+                        if (e.charCode === 13) {
+                            $('#login-button').trigger('click');
+                        }
+                    });
                 });
         }
     })
