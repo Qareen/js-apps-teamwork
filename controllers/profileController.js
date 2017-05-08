@@ -14,6 +14,7 @@ export function profileController() {
             let savePicBtn = document.getElementById('savePicBtn');
             savePicBtn.addEventListener('click', function () {
                 editPictureUrl(user);
+                // location.reload();
             });
 
             let cancelPicBtn = document.getElementById('cancelPicBtn');
@@ -56,9 +57,8 @@ export function profileController() {
             });
 
             let saveNameBtn = document.getElementById('saveNameBtn');
-            saveNameBtn.addEventListener('click', function() {
+            saveNameBtn.addEventListener('click', function () {
                 editName(user);
-                location.reload();
             })
         });
 }
@@ -73,20 +73,28 @@ function hide(element) {
 function editEmail(user) {
     let emailTextBox = document.getElementById('emailTextBox');
     let email = emailTextBox.value;
-    let credential;
-
-    user.reauthenticate(credential).then(function () {
-        user.updateEmail(email);
-    });
+    user.updateEmail(email);
 }
 
 function editName(user) {
     let nameTextBox = document.getElementById('nameTextBox');
     let name = nameTextBox.value;
+    console.log(name);
 
-    user.updateProfile({
-        displayName: name
-    });
+    if (name === user.displayName) {
+        toastr.warning("The name you entered and your current display are the same!");
+    }
+
+    else if (name === null || name.length < 3) {
+        toastr.error("The name cannot be less than 3 symbols of length!");
+    }
+
+    else {
+        user.updateProfile({
+            displayName: name
+        });
+        location.reload();
+    }
 }
 
 function editPictureUrl(user) {
@@ -96,21 +104,20 @@ function editPictureUrl(user) {
     let urlTextBox = document.getElementById('urlTextBox');
     let url = urlTextBox.value;
 
+    if (url === user.photoURL) {
+        toastr.warning("Your current profile picture has the same URL!");
+    }
 
-    if (pattern.test(url) == true) {
+
+    else if (pattern.test(url) == true) {
         user.updateProfile({
             photoURL: url
         });
-
-        let profilePic = document.getElementById('profilePicture');
-        profilePic.src = url;
+        toastr.success('The profile picture has been succesfully changed!');
     }
 
     else {
         toastr.error('Invalid URL!');
         return;
     }
-
-    urlTextBox.value = ""
-    hide(changePicContainer);
 }
