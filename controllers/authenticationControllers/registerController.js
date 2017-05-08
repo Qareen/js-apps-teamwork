@@ -46,7 +46,7 @@ function validateData() {
     } 
 
     if (validator.userName($('#username').val())) {
-        credentials.userName = $('#username').val()
+        credentials.userName = $('#username').val();
     } else {
         toastr.error('Invalid username.');
         return;

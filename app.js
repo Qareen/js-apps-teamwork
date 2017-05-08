@@ -17,4 +17,10 @@ router
     .on('/profile', () => {
         controllers.profile();
     })
+    .on('/category', (params, query) => {
+        controllers.categories(query);
+    })
+    .notFound(() => {
+        router.navigate('/home');
+    })
     .resolve();

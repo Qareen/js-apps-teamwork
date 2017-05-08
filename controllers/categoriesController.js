@@ -1,7 +1,7 @@
 import { templates } from '../utils/templates.js';
 import * as feed from './feed.js';
 
-export function homeController() {
+export function categoriesController(category) {
     firebase.auth().onAuthStateChanged((user) => {
         if (user) {
             firebase.database().ref('/posts').once('value').then((snapshot) => {
@@ -14,8 +14,10 @@ export function homeController() {
                         if (obj) {
                             for (let key in obj) {
                                 let el = obj[key];
-                                el.id = key;
-                                data.push(el);
+                                if (el.category === category) {
+                                    el.id = key;
+                                    data.push(el);
+                                }
                             }
 
                             data.reverse();
@@ -46,9 +48,6 @@ export function homeController() {
                         });
 
                     });
-
-                let profilePic = document.getElementById('profilePicIcon');
-                profilePic.setAttribute('src', user.photoURL);
             });
         } else {
             templates.get('home')
@@ -62,3 +61,4 @@ export function homeController() {
     });
 
 }
+
