@@ -5,39 +5,45 @@
 </div>
 
 <div class="post-container">
-    {{#each this}}
-    <div class="panel panel-default" id="post-{{id}}">
-        <div class="panel-heading text-center">
-            <h3>{{carBrand}}</h3>
-            <i>Posted by <b>{{author}}</b></i>
-        </div>
-        <div class="panel-body">
-            <div class="center-block">
-                <img class="post-image img-responsive" src="{{imageURL}}" alt="{{carBrand}}">
-                <div class="post-description text-center">
-                    <span>{{description}}</span>
+    {{#if this}}
+        {{#each this}}
+        <div class="panel panel-default" id="post-{{id}}">
+            <div class="panel-heading text-center">
+                <h3>{{carBrand}}</h3>
+                <i>Posted by <b>{{author}}</b></i>
+            </div>
+            <div class="panel-body">
+                <div class="center-block">
+                    <img class="post-image img-responsive" src="{{imageURL}}" alt="{{carBrand}}">
+                    <div class="post-description text-center">
+                        <span>{{description}}</span>
+                    </div>
                 </div>
             </div>
+            <div class="panel-footer">
+                <div class="likes-panel">
+                    {{#if isLiked}}
+                        <span class="glyphicon glyphicon-heart-empty like liked" id="{{id}}-unlike"></span>
+                    {{else}}
+                        <span class="glyphicon glyphicon-heart-empty like not-liked" id="{{id}}-like"></span>
+                    {{/if}}
+                    <span id="{{id}}-num-of-likes">{{likes}}</span>
+                </div>
+            </div>
+                <div class="comments" id="{{id}}-comments">
+
+                </div>
+
+                <div class="center-block">
+                    <textarea name="add-comment" id="{{id}}-add-comment" class="form-control" rows="5" placeholder="Leave comment..."></textarea>
+                </div>
         </div>
-        <div class="panel-footer">
-            <div class="likes-panel">
-                {{#if isLiked}}
-                    <span class="glyphicon glyphicon-heart-empty like liked" id="{{id}}-unlike"></span>
-                {{else}}
-                    <span class="glyphicon glyphicon-heart-empty like not-liked" id="{{id}}-like"></span>
-                {{/if}}
-                <span id="{{id}}-num-of-likes">{{likes}}</span>
-            </div>
+        {{/each}}
+        {{else}}
+        <div class="text-center">
+            <h3>There are no posts here yet. Why don't you add one?</h3>
         </div>
-            <div class="comments" id="{{id}}-comments">
-                
-            </div>
-            
-            <div class="center-block">
-                <textarea name="add-comment" id="{{id}}-add-comment" class="form-control" rows="5" placeholder="Leave comment..."></textarea>
-            </div>
-    </div>
-    {{/each}}
+    {{/if}}
 
     <button type="button" class="btn btn-circle btn-lg" id="add-post">
         <i class="glyphicon glyphicon-plus"></i>

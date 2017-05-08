@@ -2,6 +2,8 @@ import { controllers } from './controllers/controllers.js';
 
 let router = new Navigo(null, true);
 
+window.onbeforeunload = controllers.header();
+
 router
     .on('/', () => { router.navigate('/home') })
     .on('/home', () => {
