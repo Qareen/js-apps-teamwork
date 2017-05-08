@@ -12,7 +12,6 @@ export let validator = {
         return false;
     },
     password: password => {
-        // Password should contain atleast one number and one special character and capital letter and be between 6 and 16 symbols long
         let regexPattern = /^(?=.*\d)(?=.*[a-zA-Z]).{6,16}$/;
         return regexPattern.test(password);
     },
@@ -35,5 +34,13 @@ export let validator = {
     image: image => {
         let imageRegex = /^.*\.(jpg|jpeg|gif|JPG|png|PNG|svg|SVG)$/;
         return imageRegex.test(image);
+    },
+    comment: comment => {
+        if (comment.length >= 1 && comment.length <= 500) {
+            let commentRegex = /^[a-zA-Z0-9\s]+$/;
+            return commentRegex.test(comment);
+        }
+
+        return false;
     }
 }

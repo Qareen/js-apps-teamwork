@@ -1,7 +1,10 @@
 <div class="post-container">
     {{#each this}}
     <div class="panel panel-default">
-        <div class="panel-heading text-center"><h3>{{carBrand}}</h3></div>
+        <div class="panel-heading text-center">
+            <h3>{{carBrand}}</h3>
+            <i>Posted by <b>{{author}}</b></i>
+        </div>
         <div class="panel-body">
             <div class="center-block">
                 <img class="post-image img-responsive" src="{{imageURL}}" alt="{{carBrand}}">
@@ -20,6 +23,13 @@
                 <span id="{{id}}-num-of-likes">{{likes}}</span>
             </div>
         </div>
+            <div class="comments" id="{{id}}-comments">
+                
+            </div>
+            
+            <div class="center-block">
+                <textarea name="add-comment" id="{{id}}-add-comment" class="form-control" rows="5" placeholder="Leave comment..."></textarea>
+            </div>
     </div>
     {{/each}}
 

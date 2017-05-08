@@ -11,9 +11,10 @@ export function homeController() {
                         let obj = snapshot.val();
                         let data = [];
                         let currentUser = firebase.auth().currentUser.displayName;
+
                         if (obj) {
-                            for (var key in obj) {
-                                var el = obj[key];
+                            for (let key in obj) {
+                                let el = obj[key];
                                 el.id = key;
                                 data.push(el);
                             }
@@ -23,7 +24,6 @@ export function homeController() {
                             data.forEach((post) => {
                                 if (post.likedBy[currentUser]) {
                                     post.isLiked = true;
-                                    attachToUnlikeBtn(post);
                                 }
                             });
                         }
@@ -37,12 +37,15 @@ export function homeController() {
                             data.forEach((post) => {
                                 attachToLikeBtn(post);
                                 attachToUnlikeBtn(post);
+                                attachToAddCommentSecton(post);
+                                listenForNewComments(post);
                             });
                         }
 
                         $("#add-post").on('click', () => {
                             loadAddPostTemplate();
                         });
+
                     });
 
                 let profilePic = document.getElementById('profilePicIcon');
@@ -130,6 +133,14 @@ function attachToLikeBtn(post) {
         event.target.id = `${post.id}-unlike`;
         attachToUnlikeBtn(post);
     });
+}
+
+function attachToAddCommentSecton(post) {
+    $(`#${post.id}-add-comment`).keypress((e) => {
+        if (e.keyCode === 13) {
+            addComment(post);
+        }
+    })
 }
 
 function loadAddPostTemplate() {
@@ -229,4 +240,37 @@ function uploadImage(post) {
         });
 
     localStorage.removeItem("tempImage");
+}
+
+function addComment(post) {
+    let currentUser = firebase.auth().currentUser.displayName;
+
+    if (validator.comment($(`#${post.id}-add-comment`).val())) {
+        firebase.database().ref(`/posts/${post.id}/comments`).push({
+            author: currentUser,
+            content: $(`#${post.id}-add-comment`).val()
+        });
+
+        toastr.success("Comment added successfully.");
+        $(`#${post.id}-add-comment`).val("");
+    } else {
+        toastr.error("Comment should be between 1 and 500 symbols long.");
+        return;
+    }
+}
+
+function listenForNewComments(post) {
+    let commentsRef = firebase.database().ref(`/posts/${post.id}/comments`);
+    commentsRef.on('value', (snapshot) => {
+        templates.get('comments')
+            .then((res) => {
+                let data = $.map(snapshot.val(), (value, index) => {
+                    return [value];
+                });
+                let hbTemplate = Handlebars.compile(res);
+                let template = hbTemplate(data);
+
+                $(`#${post.id}-comments`).html(template);
+            });
+    });
 }

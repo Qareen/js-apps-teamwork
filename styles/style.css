@@ -102,10 +102,6 @@
     text-align: center;
 }
 
-.form-control {
-    margin-bottom: 20px;
-}
-
 #go-back {
     display: inline;
     border: none;
@@ -157,4 +153,8 @@
 .changeInfoContainer {
     display: none;
     margin-top: 3%;
+}
+
+.comment{
+    margin: 10px;
 }
