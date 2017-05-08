@@ -36,8 +36,8 @@ export let validator = {
         return imageRegex.test(image);
     },
     comment: comment => {
-        if (comment.length >= 1 && comment.length <= 500) {
-            let commentRegex = /^[a-zA-Z0-9\s]+$/;
+        if (comment.length >= 3 && comment.length <= 500) {
+            let commentRegex = /^[a-zA-Z0-9\s.,!?@#$%^&*()-=+-<>\\:;'"`]+$/;;
             return commentRegex.test(comment);
         }
 

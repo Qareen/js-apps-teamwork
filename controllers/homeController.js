@@ -49,7 +49,6 @@ export function homeController() {
                     });
 
                 let profilePic = document.getElementById('profilePicIcon');
-                console.log(profilePic);
                 profilePic.setAttribute('src', user.photoURL);
             });
         } else {
@@ -136,7 +135,7 @@ function attachToLikeBtn(post) {
 }
 
 function attachToAddCommentSecton(post) {
-    $(`#${post.id}-add-comment`).keypress((e) => {
+    $(`#${post.id}-add-comment`).keyup((e) => {
         if (e.keyCode === 13) {
             addComment(post);
         }
@@ -254,7 +253,8 @@ function addComment(post) {
         toastr.success("Comment added successfully.");
         $(`#${post.id}-add-comment`).val("");
     } else {
-        toastr.error("Comment should be between 1 and 500 symbols long.");
+        toastr.error("Comment should be between 3 and 500 symbols long.");
+        $(`#${post.id}-add-comment`).val("");
         return;
     }
 }
