@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="227a9716-c3ed-4f06-8cad-7eefb5e89228" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controllers/profileController.js" afterPath="$PROJECT_DIR$/controllers/profileController.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -61,8 +60,8 @@
               <file leaf-file-name="profileController.js" pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/controllers/profileController.js">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="347">
-                      <caret line="95" column="26" lean-forward="false" selection-start-line="95" selection-start-column="26" selection-end-line="95" selection-end-column="26" />
+                    <state relative-caret-position="505">
+                      <caret line="94" column="8" lean-forward="false" selection-start-line="94" selection-start-column="8" selection-end-line="94" selection-end-column="74" />
                       <folding />
                     </state>
                   </provider>
@@ -479,12 +478,12 @@
       <workItem from="1494158392354" duration="636000" />
       <workItem from="1494159052531" duration="56000" />
       <workItem from="1494159130289" duration="24034000" />
-      <workItem from="1494239846908" duration="1168000" />
+      <workItem from="1494239846908" duration="1906000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="60653000" />
+    <option name="totallyTimeSpent" value="61391000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -905,8 +904,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/controllers/profileController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="347">
-          <caret line="95" column="26" lean-forward="false" selection-start-line="95" selection-start-column="26" selection-end-line="95" selection-end-column="26" />
+        <state relative-caret-position="505">
+          <caret line="94" column="8" lean-forward="false" selection-start-line="94" selection-start-column="8" selection-end-line="94" selection-end-column="74" />
           <folding />
         </state>
       </provider>

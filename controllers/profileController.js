@@ -79,20 +79,20 @@ function editEmail(user) {
 function editName(user) {
     let nameTextBox = document.getElementById('nameTextBox');
     let name = nameTextBox.value;
-    console.log(name);
 
     if (name === user.displayName) {
         toastr.warning("The name you entered and your current display are the same!");
     }
 
-    else if (name === null || name.length < 3) {
-        toastr.error("The name cannot be less than 3 symbols of length!");
+    else if (!name || name.length < 3) {
+        toastr.warning("The name cannot be less than 3 symbols of length!");
     }
 
     else {
         user.updateProfile({
             displayName: name
         });
+        toastr.success("Your display name has been successfully changed");
         location.reload();
     }
 }
@@ -113,7 +113,7 @@ function editPictureUrl(user) {
         user.updateProfile({
             photoURL: url
         });
-        toastr.success('The profile picture has been succesfully changed!');
+        toastr.success('The profile picture has been successfully changed!');
     }
 
     else {
