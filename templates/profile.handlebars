@@ -19,48 +19,50 @@
                         <div class="col-xs-10">
                             <!--<label for="urlTextBox">Picture URL:</label>-->
                             <input class="form-control" id="urlTextBox" type="url" placeholder="Picture URL">
-                            <button id="submitPicBtn" class="btn btn-success">Save</button>
+                            <button id="savePicBtn" class="btn btn-success">Save</button>
                             <button id="cancelPicBtn" class="btn btn-danger">Cancel</button>
                         </div>
                     </div>
                 </div>
                 <div id="profileInfoContainer" class="col col-xs-7">
-                    Email: {{this.email}}
+                    <p>
+                        Email: {{this.email}}
 
-                    <button id="editEmailBtn" class="btn btn-primary"><label for="emailTextBox">Edit</label>
-                    </button>
+                        <button id="editEmailBtn" class="btn btn-primary"><!--<label for="emailTextBox">-->Edit<!--</label>-->
+                        </button>
                     <div id="changeEmailContainer" class="form-group row changeInfoContainer">
                         <div class="col-xs-10">
-                            <input class="form-control changeInfo" id="emailTextBox" type="email"
+                            <input id="emailTextBox" class="form-control changeInfo" type="email"
                                    placeholder="e.g John@mymail.com">
                             <button id="saveEmailBtn" class="btn btn-success">Save</button>
                             <button id="cancelEmailBtn" class="btn btn-danger">Cancel</button>
                         </div>
                     </div>
-
-                                    Display name:
-                                    {{#if this.displayName}}
-                                        {{this.displayName}}
-                                    {{else}}
-                                        <small class="text-muted">
-                                            <u>No display name added yet</u>
-                                        </small>
-                                    {{/if}}
-                                    <button id="editNameBtn" class="btn btn-primary">Edit</button>
-                            <div class="form-group row changeInfoContainer">
-                                <div class="col-xs-12">
-                                    <input class="form-control" id="nameTextBox" type="text" placeholder="e.g John">
-                                    <button id="submitNameBtn" class="btn btn-success">Save</button>
-                                    <button id="cancelNameBtn" class="btn btn-danger">Cancel</button>
-                                </div>
-                            </div>
-                            <p></p>
+                    </p>
+                    <p>
+                        Display name:
+                        {{#if this.displayName}}
+                            {{this.displayName}}
+                        {{else}}
+                            <small class="text-muted">
+                                <u>No display name added yet</u>
+                            </small>
+                        {{/if}}
+                        <button id="editNameBtn" class="btn btn-primary">Edit</button>
+                    <div id="changeNameContainer" class="form-group row changeInfoContainer">
+                        <div class="col-xs-10">
+                            <input class="form-control" id="nameTextBox" type="text" placeholder="e.g John">
+                            <button id="saveNameBtn" class="btn btn-success">Save</button>
+                            <button id="cancelNameBtn" class="btn btn-danger">Cancel</button>
                         </div>
-
                     </div>
+                    </p>
                 </div>
 
-                <button type="button" class="btn btn-circle btn-lg" id="add-post">
-                    <i class="glyphicon glyphicon-plus"></i>
-                </button>
             </div>
+        </div>
+
+        <button type="button" class="btn btn-circle btn-lg" id="add-post">
+            <i class="glyphicon glyphicon-plus"></i>
+        </button>
+    </div>
