@@ -10,17 +10,19 @@ You can view Careen [here](https://careen.aerobatic.io).
 
 # Used technologies
 
-We used various of JavaScript libraries such as:
+We used various JavaScript libraries such as:
   - Navigo
   - SystemJS
   - toastr
   - babel
   - Handlebars
   - jQuery
+  - Mocha
+  - Chai
 
 # The idea
 
-Every registered user can add posts with image and description of his car. Users can like and comment the posts. Posts can be sorted by categories.
+Every registered user can add image posts of a car with description. Users can like and comment the posts. Posts can be sorted by categories.
 
 # About us
 
