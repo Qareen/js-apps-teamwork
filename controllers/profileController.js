@@ -1,4 +1,5 @@
 import {templates} from '../utils/templates.js';
+import { validator } from '../utils/validator.js';
 
 export function profileController() {
 
@@ -84,8 +85,8 @@ function editName(user) {
         toastr.warning("The name you entered and your current display are the same!");
     }
 
-    else if (!name || name.length < 3) {
-        toastr.warning("The name cannot be less than 3 symbols of length!");
+    else if (!validator.userName(name)) {
+        toastr.warning("Username should be between 4 and 20 symbols long and should contain only letters and digits.");
     }
 
     else {
