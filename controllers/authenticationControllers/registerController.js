@@ -27,7 +27,13 @@ export function registerController() {
                         }
                     });
                 }
-            })
+            });
+
+            $(document).keypress((e) => {
+                if (e.charCode === 13) {
+                    $('#register-button').trigger('click');
+                }
+            });
         });
 }
 
@@ -43,7 +49,7 @@ function validateData() {
     } else {
         toastr.error('Invalid email.');
         return;
-    } 
+    }
 
     if (validator.userName($('#username').val())) {
         credentials.userName = $('#username').val();

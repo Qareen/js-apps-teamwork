@@ -5,11 +5,16 @@
 }
 
 .jumbotron {
-    color: black;
+    color: white;
     background: url('http://www.hotszots.eu/_galler/IMG/FERRARI/ferrari-f12-berlinetta-car-front-hd-wallpaper.jpg') center center;
-    padding: 5px;
+    padding: 10em;
     margin-bottom: 0;
+}
 
+.intro {
+    font-size: 44px;
+    font-style: italic;
+    margin: 3em;
 }
 
 #welcome {
