@@ -150,7 +150,7 @@ export function exportData() {
         return;
     }
 
-    if (validator.desription($("#description").val())) {
+    if (validator.description($("#description").val())) {
         post.description = $("#description").val();
     } else {
         toastr.error("Invalid description. It should be between 3 and 1000 symbols long.");

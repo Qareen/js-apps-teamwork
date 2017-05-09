@@ -23,10 +23,10 @@ export let validator = {
 
         return false;
     },
-    desription: desription => {
-        if (desription.length >= 3 && desription.length <= 1000) {
+    description: description => {
+        if (description.length >= 3 && description.length <= 1000) {
             let descriptionRegex = /^[a-zA-Z0-9\s]+$/;
-            return descriptionRegex.test(desription);
+            return descriptionRegex.test(description);
         }
 
         return false;
