@@ -1,9 +1,7 @@
 import {templates} from '../../utils/templates.js';
 
 export function loginController() {
-<<<<<<< HEAD
     firebase.auth().onAuthStateChanged(changeAuthState);
-=======
     firebase.auth().onAuthStateChanged((user) => {
         if (user) {
             window.location.href = "/#/home";
@@ -30,7 +28,6 @@ export function loginController() {
                 });
         }
     })
->>>>>>> ee7ebedeb53448b9c585aba87a9bfc324850a218
 }
 
 function changeAuthState(user) {

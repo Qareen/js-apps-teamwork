@@ -1,8 +1,7 @@
 import {validator} from '../../utils/validator';
 const chai = require('chai'),
     expect = chai.expect,
-    sinon = require('sinon');
-
+    mocha = require('mocha');
 
 describe('Validation tests', () => {
     it('Validator should return true when a valid email is passed', () => {
