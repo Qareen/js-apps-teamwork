@@ -2,6 +2,7 @@ import {templates} from '../../utils/templates.js';
 
 export function loginController() {
     firebase.auth().onAuthStateChanged(changeAuthState);
+<<<<<<< HEAD
     firebase.auth().onAuthStateChanged((user) => {
         if (user) {
             window.location.href = "/#/home";
@@ -28,6 +29,8 @@ export function loginController() {
                 });
         }
     })
+=======
+>>>>>>> b8484ddc52b9faae54a9d9bac90138b1cdd13683
 }
 
 function changeAuthState(user) {
@@ -46,7 +49,13 @@ function changeAuthState(user) {
                     if (credentials) {
                         authenticateUser(credentials);
                     }
-                })
+                });
+
+                $(document).keypress((e) => {
+                if (e.charCode === 13) {
+                    $('#login-button').trigger('click');
+                }
+            });
             });
     }
 };

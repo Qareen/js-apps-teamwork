@@ -208,7 +208,6 @@ export function addComment(post) {
         if (window.location.href.includes('category')) {
             let i = window.location.href.indexOf('?');
             let category = window.location.href.slice(i + 1);
-            console.log(category);
             categoriesController(category);
         } else {
             homeController();
